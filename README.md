@@ -27,7 +27,6 @@ Be sure to have [Node.js](https://nodejs.org/en/download/) installed, then:
 - Group your .mid or .midi files in folders and add them to the `midis` folder. Each folder will be converted to a set.
 - Run `npm run convert` to run the conversion.
 - The converted files should be in the `sets` folder, copy each folder set to the custom sets folder `C:\Users\Public\Documents\Plugin Boutique\Scaler2\Sets` and start using them.
--
 
 ## Configuration
 
