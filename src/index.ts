@@ -15,11 +15,16 @@ interface ChordSet {
 }
 
 class MidiChordDetector {
-  constructor(
-    private inFolderPath: string,
-    private outFolderPath: string,
-    private tolerance: number = 20
-  ) {}
+  inFolderPath: string;
+  outFolderPath: string;
+  threshold: number;
+
+  constructor() {
+    const config = JSON.parse(fs.readFileSync("./config.json").toString());
+    this.inFolderPath = config.inFolderPath;
+    this.outFolderPath = config.outFolderPath;
+    this.threshold = config.threshold;
+  }
 
   public start(): void {
     const directories = fs
@@ -58,8 +63,8 @@ class MidiChordDetector {
         notesOn.push(event.noteNumber);
       } else if (event.type === "noteOff") {
         const deltaTime = event.deltaTime;
-        if (deltaTime > this.tolerance) {
-          // if deltaTime is greater than the tolerance, it's the end of the current chord
+        if (deltaTime > this.threshold) {
+          // if deltaTime is greater than the threshold, it's the end of the current chord
           chords.push([...new Set(notesOn)]); // add the chord to the chords array, using a Set to remove duplicates
           notesOn.length = 0; // clear the notesOn array
         }
@@ -89,7 +94,6 @@ class MidiChordDetector {
 
     xml.push(`<?xml version="1.0" encoding="UTF-8"?>\n\n`);
     xml.push(`<CHORDSET version="2" uuid="${this.generateUuid()}">\n`);
-
     for (const chord of chordSet.CHORD) {
       xml.push(`  <CHORD>\n`);
       for (const note of chord.NOTE) {
@@ -97,7 +101,6 @@ class MidiChordDetector {
       }
       xml.push(`  </CHORD>\n`);
     }
-
     xml.push(`</CHORDSET>\n`);
 
     const res = xml.join("");
@@ -142,5 +145,5 @@ class MidiChordDetector {
   }
 }
 
-const ch = new MidiChordDetector("./midis", "./sets", 20);
+const ch = new MidiChordDetector();
 ch.start();

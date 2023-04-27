@@ -1,0 +1,5 @@
+{
+  "threshold": 20,
+  "inFolderPath": "./midis",
+  "outFolderPath": "./sets"
+}
