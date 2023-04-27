@@ -1,6 +1,6 @@
 {
   "name": "midi-to-scaler-chord-sets",
-  "description": "",
+  "description": "Convert chord progressions from midi files to Plugin Boutique's Scaler chord sets.",
   "version": "1.0.0",
   "main": "index.ts",
   "repository": "https://github.com/joanroig/midi-to-scaler-chord-sets.git",
