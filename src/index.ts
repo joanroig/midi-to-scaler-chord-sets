@@ -15,26 +15,34 @@ interface ChordSet {
 }
 
 class MidiChordDetector {
-  constructor(private folderPath: string, private tolerance: number = 20) {}
+  constructor(
+    private inFolderPath: string,
+    private outFolderPath: string,
+    private tolerance: number = 20
+  ) {}
 
   public start(): void {
     const directories = fs
-      .readdirSync(this.folderPath, { withFileTypes: true })
+      .readdirSync(this.inFolderPath, { withFileTypes: true })
       .filter((dirent): boolean => dirent.isDirectory())
       .map((dirent): string => dirent.name);
 
     for (const directory of directories) {
       const fileNames = fs
-        .readdirSync(path.join(this.folderPath, directory))
-        .filter((name): boolean => name.endsWith(".mid"));
+        .readdirSync(path.join(this.inFolderPath, directory))
+        .filter(
+          (name): boolean => name.endsWith(".mid") || name.endsWith(".midi")
+        );
 
       for (const fileName of fileNames) {
-        const filePath = path.join(this.folderPath, directory, fileName);
+        const filePath = path.join(this.inFolderPath, directory, fileName);
         const midiData = fs.readFileSync(filePath);
         const midiParsed = midi.parseMidi(midiData);
+        console.info(`Detecting chords: "${filePath}"`);
         this.detectChords(`${directory}/${fileName}`, midiParsed);
       }
     }
+    console.info(`Finished!`);
   }
 
   private detectChords(outFilePath: string, midiParsed: midi.MidiData): void {
@@ -97,15 +105,21 @@ class MidiChordDetector {
   }
 
   private saveChordsXml(xml: string, outFilePath: string): void {
-    const fileName = outFilePath.replace(".mid", ".xml");
-    outFilePath = `./sets/${fileName}`;
+    const fileName =
+      path.basename(outFilePath, path.extname(outFilePath)) + ".xml";
+    outFilePath = path.join(
+      this.outFolderPath,
+      path.dirname(outFilePath),
+      fileName
+    );
     // create the directory if it doesn't exist
-    const directoryPath = outFilePath.slice(0, outFilePath.lastIndexOf("/"));
+    const directoryPath = path.dirname(outFilePath);
     if (!fs.existsSync(directoryPath)) {
       fs.mkdirSync(directoryPath, { recursive: true });
     }
 
     // write the file
+    console.info(`Saving scaler set: "${outFilePath}"`);
     fs.writeFileSync(outFilePath, xml);
   }
 
@@ -128,5 +142,5 @@ class MidiChordDetector {
   }
 }
 
-const ch = new MidiChordDetector("./midis", 20);
+const ch = new MidiChordDetector("./midis", "./sets", 20);
 ch.start();

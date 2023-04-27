@@ -9,8 +9,7 @@
   "type": "module",
   "scripts": {
     "build": "rimraf ./build && tsc -p tsconfig.build.json",
-    "convert": "ts-node ./src/index.ts",
-    "convert-bw": "ts-node ./src/index.ts true",
+    "convert": "npx tsx ./src/index.ts",
     "run:dev": "nodemon",
     "lint": "eslint . --ext .ts",
     "format": "eslint . --ext .ts --fix",
@@ -24,13 +23,13 @@
     "midi-file": "^1.2.4",
     "nodemon": "^2.0.22",
     "rimraf": "^5.0.0",
-    "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
     "@types/node": "^18.16.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
-    "@typescript-eslint/parser": "^5.59.1"
+    "@typescript-eslint/parser": "^5.59.1",
+    "tsx": "^3.12.6"
   },
   "lint-staged": {
     "src/**/*.{js,ts}": "eslint --cache --fix"
