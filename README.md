@@ -35,5 +35,5 @@ The input, output and threshold for chord detection can be changed in: [config.j
 ### Configuration parameters
 
 - **threshold:** time interval in MIDI ticks to determine the maximum amount of time between note-on and note-off events for the events to be considered part of the same chord.
-- **inFolderPath:** folder used to read the midi files, it must contain a subfolder with the midi files for each set. The name of each subfolder will name the set.
+- **inFolderPath:** folder used to read the midi files, it must contain subfolders with the midi files for each set. The name of each subfolder will name the set.
 - **outFolderPath:** folder used to save the converted sets.
