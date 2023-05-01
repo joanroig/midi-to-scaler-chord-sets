@@ -22,11 +22,13 @@ Go to the `examples` folder to see a converted midi file like this one:
 
 Be sure to have [Node.js](https://nodejs.org/en/download/) installed, then:
 
-- [Download](https://github.com/joanroig/swatches-to-ase/archive/refs/heads/main.zip) or clone the repo.
+- [Download](https://github.com/joanroig/midi-to-scaler-chord-sets/archive/refs/heads/main.zip) or clone the repo.
 - Run `npm install` in the root folder to install dependencies.
 - Group your .mid or .midi files in folders and add them to the `midis` folder. Each folder will be converted to a set.
 - Run `npm run convert` to run the conversion.
-- The converted files should be in the `sets` folder, copy each folder set to the custom sets folder `C:\Users\Public\Documents\Plugin Boutique\Scaler2\Sets` and start using them.
+- The converted files should be in the `sets` folder, copy each folder set to the custom sets folder and start using them:
+  - Windows path: `C:/Users/Public/Documents/Plugin Boutique/Scaler2/Sets`
+  - MacOS path: `/Users/Shared/Plugin Boutique/Scaler/Sets`
 
 ## Configuration
 
