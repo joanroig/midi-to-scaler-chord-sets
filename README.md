@@ -1,6 +1,6 @@
 # Midi to Scaler chord sets
 
-Convert chord progressions from midi files to Plugin Boutique's Scaler sets.
+Convert chord progressions from midi files to Plugin Boutique's Scaler 2 sets.
 
 ## Example
 
@@ -10,6 +10,7 @@ Go to the `examples` folder to see a converted midi file like this one:
   <img src="examples/midi.png" alt="converted palette" width="400px"/>
   <br>
   <i>Original midi file</i>
+  
 </p>
 
 <p align="center">
@@ -28,7 +29,7 @@ Be sure to have [Node.js](https://nodejs.org/en/download/) installed, then:
 - Run `npm run convert` to run the conversion.
 - The converted files should be in the `sets` folder, copy each folder set to the custom sets folder and start using them:
   - Windows path: `C:/Users/Public/Documents/Plugin Boutique/Scaler2/Sets`
-  - MacOS path: `/Users/Shared/Plugin Boutique/Scaler/Sets`
+  - MacOS path: `/Users/Shared/Plugin Boutique/Scaler2/Sets`
 
 ## Configuration
 
