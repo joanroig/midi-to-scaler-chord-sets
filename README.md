@@ -19,7 +19,21 @@ Go to the `examples` folder to see a converted midi file like this one:
   <i>Converted chord set loaded in Scaler 2</i>
 </p>
 
-## How to use
+## Run binaries
+
+- [Download](https://github.com/joanroig/midi-to-scaler-chord-sets/releases) the latest release for your platform (Windows or MacOS) and unzip it.
+- Group your .mid or .midi files in folders and add them to the `midis` folder. Each folder will be converted to a set.
+- Open a terminal and navigate to the unzipped folder, for example: `cd C:\Users\YOUR_USER\Downloads\midi-to-scaler-chord-sets_1.0.0_windows`
+- Run the tool by typing the executable in the terminal:
+  - Windows: `midi-to-scaler-chord-sets.exe`
+  - MacOS: `./midi-to-scaler-chord-sets`
+- The converted files should be in the `sets` folder, copy each folder set to the custom sets folder and start using them:
+  - Windows path: `C:/Users/Public/Documents/Plugin Boutique/Scaler2/Sets`
+  - MacOS path: `/Users/Shared/Plugin Boutique/Scaler2/Sets`
+
+**⚠️Warning:** Running the tool by double clicking the executable may not work because it will look for the configuration file in the home directory.
+
+## Run from source
 
 Be sure to have [Node.js](https://nodejs.org/en/download/) installed, then:
 
