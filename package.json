@@ -3,12 +3,15 @@
   "description": "Convert chord progressions from midi files to Plugin Boutique's Scaler chord sets.",
   "version": "1.0.0",
   "main": "index.ts",
+  "bin": "build/index.js",
   "repository": "https://github.com/joanroig/midi-to-scaler-chord-sets.git",
   "author": "Joan Roig <joanroigsegura@gmail.com>",
   "license": "MIT",
-  "type": "module",
   "scripts": {
-    "build": "rimraf ./build && tsc -p tsconfig.build.json",
+    "build": "npm run build-js && npm run build-win && npm run build-mac",
+    "build-js": "rimraf ./build && tsc -p tsconfig.build.json && copyfiles config.json build",
+    "build-win": "rimraf ./dist/win && copyfiles config.json dist/win && copyfiles -u 1 ./examples/midis/Pack1/chords.mid ./dist/win/ && copyfiles examples/midis dist/win && npx pkg --target node14-win-x64 --o dist/win/midi-to-scaler-chord-sets.exe --C GZip . && zip-build -o -t %NAME%_%VERSION%_windows.%EXT% dist/win/ dist/",
+    "build-mac": "rimraf ./dist/mac && copyfiles config.json dist/mac && copyfiles -u 1 ./examples/midis/Pack1/chords.mid ./dist/mac/ && copyfiles examples/midis dist/mac && npx pkg --target node14-macos-x64 --o dist/mac/midi-to-scaler-chord-sets --C GZip . && zip-build -o -t %NAME%_%VERSION%_macos.%EXT% dist/mac/ dist/",
     "convert": "npx tsx ./src/index.ts",
     "run:dev": "nodemon",
     "lint": "eslint . --ext .ts",
@@ -22,17 +25,27 @@
     "lint-staged": "^13.2.2",
     "midi-file": "^1.2.4",
     "nodemon": "^2.0.22",
-    "rimraf": "^5.0.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
     "@types/node": "^18.16.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
-    "tsx": "^3.12.6"
+    "copyfiles": "^2.4.1",
+    "pkg": "^5.8.1",
+    "rimraf": "^5.0.0",
+    "tsx": "^3.12.6",
+    "zip-build": "^1.8.0"
   },
   "lint-staged": {
     "src/**/*.{js,ts}": "eslint --cache --fix"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js",
+    "targets": [
+      "node14-win-x64",
+      "node14-macos-x64"
+    ]
   },
   "typings": "src/global.d.ts"
 }

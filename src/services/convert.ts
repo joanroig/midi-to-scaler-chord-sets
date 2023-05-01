@@ -10,9 +10,21 @@ export class MidiChordDetector {
   threshold: number;
 
   constructor() {
-    const config = JSON.parse(fs.readFileSync("./config.json").toString());
-    this.inFolderPath = config.inFolderPath;
-    this.outFolderPath = config.outFolderPath;
+    // Read config file
+    const configPath = path.join(process.cwd(), "config.json");
+    const config = JSON.parse(fs.readFileSync(configPath).toString());
+    // Prepare in and out paths taking into account if they are relative or absolute
+    if (!path.isAbsolute(config.inFolderPath)) {
+      this.inFolderPath = path.join(process.cwd(), `${config.inFolderPath}`);
+    } else {
+      this.inFolderPath = config.inFolderPath;
+    }
+    if (!path.isAbsolute(config.outFolderPath)) {
+      this.outFolderPath = path.join(process.cwd(), `${config.outFolderPath}`);
+    } else {
+      this.outFolderPath = config.outFolderPath;
+    }
+    // Set threshold
     this.threshold = config.threshold;
   }
 
