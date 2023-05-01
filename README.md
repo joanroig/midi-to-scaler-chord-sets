@@ -22,14 +22,36 @@ Go to the `examples` folder to see a converted midi file like this one:
 ## Run binaries
 
 - [Download](https://github.com/joanroig/midi-to-scaler-chord-sets/releases) the latest release for your platform (Windows or MacOS) and unzip it.
-- Group your .mid or .midi files in folders and add them to the `midis` folder. Each folder will be converted to a set.
-- Open a terminal and navigate to the unzipped folder, for example: `cd C:\Users\YOUR_USER\Downloads\midi-to-scaler-chord-sets_1.0.0_windows`
-- Run the tool by typing the executable in the terminal:
-  - Windows: `midi-to-scaler-chord-sets.exe`
-  - MacOS: `./midi-to-scaler-chord-sets`
-- The converted files should be in the `sets` folder, copy each folder set to the custom sets folder and start using them:
-  - Windows path: `C:/Users/Public/Documents/Plugin Boutique/Scaler2/Sets`
-  - MacOS path: `/Users/Shared/Plugin Boutique/Scaler2/Sets`
+- Group your .mid or .midi files in folders and add them to the **midis** folder. Each folder will be converted to a set (a demo set with a single chord progression is provided for a quick demo).
+- Continue depending on your OS:
+
+### Windows
+
+- Open a Command Prompt (cmd.exe) and navigate to the unzipped folder, for example:
+
+  `cd C:/Users/YOUR_USER/Downloads/midi-to-scaler-chord-sets_1.0.0_windows`
+
+- Run the tool by typing in the cmd:
+
+  `midi-to-scaler-chord-sets.exe`
+
+- The converted files should be in the **sets** folder, copy each folder set to the custom sets folder and start using them: **C:/Users/Public/Documents/Plugin Boutique/Scaler2/Sets**
+
+### MacOS
+
+- Open the Terminal and navigate to the unzipped folder, for example:
+
+  `cd /Users/YOUR_USER/Downloads/midi-to-scaler-chord-sets_1.0.0_macos`
+
+- Grant execute permission to the tool by typing in the terminal:
+
+  `chmod +x midi-to-scaler-chord-sets`
+
+- Run the tool by typing in the terminal:
+
+  `./midi-to-scaler-chord-sets`
+
+- The converted files should be in the **sets** folder, copy each folder set to the custom sets folder and start using them: **/Users/Shared/Plugin Boutique/Scaler2/Sets**
 
 **⚠️Warning:** Running the tool by double clicking the executable may not work because it will look for the configuration file in the home directory.
 
@@ -39,11 +61,11 @@ Be sure to have [Node.js](https://nodejs.org/en/download/) installed, then:
 
 - [Download](https://github.com/joanroig/midi-to-scaler-chord-sets/archive/refs/heads/main.zip) or clone the repo.
 - Run `npm install` in the root folder to install dependencies.
-- Group your .mid or .midi files in folders and add them to the `midis` folder. Each folder will be converted to a set.
+- Group your .mid or .midi files in folders and add them to the **midis** folder. Each folder will be converted to a set.
 - Run `npm run convert` to run the conversion.
-- The converted files should be in the `sets` folder, copy each folder set to the custom sets folder and start using them:
-  - Windows path: `C:/Users/Public/Documents/Plugin Boutique/Scaler2/Sets`
-  - MacOS path: `/Users/Shared/Plugin Boutique/Scaler2/Sets`
+- The converted files should be in the **sets** folder, copy each folder set to the custom sets folder and start using them:
+  - Windows path: **C:/Users/Public/Documents/Plugin Boutique/Scaler2/Sets**
+  - MacOS path: **/Users/Shared/Plugin Boutique/Scaler2/Sets**
 
 ## Configuration
 
