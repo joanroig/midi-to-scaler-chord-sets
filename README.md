@@ -2,6 +2,13 @@
 
 Convert chord progressions from midi files to Plugin Boutique's Scaler 2 sets.
 
+This little tool iterates through all midi files from a given folder and exports the chord progressions in XML files to easily create Scaler 2 chord packs.
+
+Considerations:
+
+- If a midi file has multiple tracks, only the first track with notes will be used.
+- Tested only with midi files that have no overlaps (further testing and pull requests are welcome!).
+
 ## Example
 
 Go to the `examples` folder to see a converted midi file like this one:

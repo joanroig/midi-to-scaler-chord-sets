@@ -53,10 +53,21 @@ export class MidiChordDetector {
   }
 
   private detectChords(outFilePath: string, midiParsed: midi.MidiData): void {
-    let chordSet: ChordSet = { CHORD: [] };
+    // Use the note events of the first track that has any note
+    let noteEvents;
+    for (const track of midiParsed.tracks) {
+      for (const event of track) {
+        if (event.type === "noteOn") {
+          noteEvents = track;
+        }
+      }
+    }
+    if (!noteEvents) {
+      console.error("None of the tracks of has notes!");
+      return;
+    }
 
-    const noteEvents = midiParsed.tracks[0];
-
+    const chordSet: ChordSet = { CHORD: [] };
     const notesOn: number[] = []; // track all noteOn events
     const chords: number[][] = []; // store all chords found
 
@@ -88,7 +99,6 @@ export class MidiChordDetector {
 
     const xml = this.getChordSetXml(chordSet);
     this.saveChordsXml(xml, outFilePath);
-    chordSet = { CHORD: [] };
   }
 
   private getChordSetXml(chordSet: ChordSet): string {
