@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CHORDSET version="2" uuid="31cfeed9-cbc7-ae69-bd3f-65aa15b62ed6">
+  <CHORD>
+    <NOTE MIDI="69"/>
+    <NOTE MIDI="60"/>
+    <NOTE MIDI="64"/>
+    <NOTE MIDI="45"/>
+  </CHORD>
+  <CHORD>
+    <NOTE MIDI="66"/>
+    <NOTE MIDI="70"/>
+    <NOTE MIDI="61"/>
+    <NOTE MIDI="42"/>
+  </CHORD>
+  <CHORD>
+    <NOTE MIDI="64"/>
+    <NOTE MIDI="68"/>
+    <NOTE MIDI="71"/>
+    <NOTE MIDI="40"/>
+  </CHORD>
+  <CHORD>
+    <NOTE MIDI="66"/>
+    <NOTE MIDI="70"/>
+    <NOTE MIDI="61"/>
+    <NOTE MIDI="42"/>
+  </CHORD>
+</CHORDSET>
