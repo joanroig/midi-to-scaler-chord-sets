@@ -24,7 +24,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "midi-file": "^1.2.4",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.0.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
